@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import logo from './rkmTubeLogo.svg';
 import './App.css';
-import Youtube from './Youtube';
+import Youtube from './Api/Youtube';
 
 class App extends Component {
   render() {
