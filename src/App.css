@@ -47,3 +47,8 @@ button {
   font-size: 20px;
   background-color: #e74c3c;
 }
+
+span {
+  text-decoration: underline;
+  color: white;
+}
