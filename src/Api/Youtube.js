@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Footer from '../Footer';
 
 //const API = 'AIzaSyCmjaw9urF3QAt-XCesWLjkZMC3LX90ClM';
 const API = 'AIzaSyDV9rYoxC1wMgjcSuaIFfIpSurFZAkhzgU';
@@ -73,7 +74,7 @@ class Youtube extends Component {
       var result;
       var channelID;
 
-      if (this.state.videoNumber > 30 || this.state.videoNumber == 0) {
+      if (this.state.videoNumber > 30 || this.state.videoNumber === 0) {
           result = 5;
       } else {
         result = this.state.videoNumber;
@@ -113,32 +114,36 @@ class Youtube extends Component {
 
     return(
       <div>
+        <div className="container">
 
-          <form onSubmit={this.handleSubmit}>
-            <label>
-              <h3>Enter Youtube Channel ID: </h3>
-              <input type="text" value={this.state.channel} onChange={this.handleChange} />
-            </label>
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                <h3>Enter Youtube Channel ID: </h3>
+                <input type="text" value={this.state.channel} onChange={this.handleChange} />
+              </label>
 
-            <label>
-              <h3>Number of Videos( no more than 30): </h3>
-              <input type="text" pattern="[0-9]*" value={this.state.videoNumber} onChange={this.handleVideoNumberChange} />
-            </label>
+              <label>
+                <h3>Number of Videos( no more than 30): </h3>
+                <input type="text" pattern="[0-9]*" value={this.state.videoNumber} onChange={this.handleVideoNumberChange} />
+              </label>
 
-          </form>
+            </form>
 
-          <button onClick={this.fetchVideos}>Fetch Youtube videos</button>
+            <button onClick={this.fetchVideos}>Fetch Youtube videos</button>
 
-            {
-              this.state.resultYt.map((link, i) => {
-                console.log(link);
-                //"https://www.youtube.com/embed/vHiag5VZ4CQ"
-                var frame = <div className="youtube"><iframe key={i} width="560" height="315" src={link} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe></div>
-                return frame;
-              })
-            }
+              {
+                this.state.resultYt.map((link, i) => {
+                  console.log(link);
+                  //"https://www.youtube.com/embed/vHiag5VZ4CQ"
+                  var frame = <div className="youtube"><iframe key={i} width="560" height="315" src={link} frameBorder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullScreen></iframe></div>
+                  return frame;
+                })
+              }
+        </div>
 
-      </div>
+        <Footer />
+    </div>
+
       );
     }
   }
